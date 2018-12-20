@@ -1,0 +1,17 @@
+
+#formularioAtividades{
+	width:75%;
+	margin: 0 auto;
+	opacity: 0.75;
+	filter: alpha(opacity=75);
+}
+
+.teste{
+	text-align:center;
+}
+#add{
+	margin-top:40px;
+}
+#adicionar{
+	font-size:40px;	
+}

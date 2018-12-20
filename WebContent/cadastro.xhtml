@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+
+	<h:head>  
+        <title>Sua Agenda</title>    
+		<link rel="StyleSheet" type="text/css" href="stylesheet.css" media="screen"></link>
+		<style>               
+        	.Bimage{
+        		background-image:url(imagens/wallpaper.jpg); 
+        	}        
+        </style> 
+    </h:head>
+
+	<h:body class="Bimage">
+		
+		<p:confirmDialog widgetVar="confirmDlg" message="Falha no cadastro!" global="true" showEffect="fade" hideEffect="explode">
+	    	<p:commandButton value="OK" type="button" styleClass="ui-confirmdialog-ok" onclick="PF('confirmDlg').hide()" icon="ui-icon-check" />
+		</p:confirmDialog>
+		
+		<p:confirmDialog widgetVar="confirmaCadastro" message="Cadastro com sucesso!" global="true" showEffect="fade" hideEffect="explode">
+	    	<p:commandButton value="OK" type="button" styleClass="ui-confirmdialog-ok" onclick="PF('confirmaCadastro').hide()" icon="ui-icon-check" ajax="false"/>
+		</p:confirmDialog>
+		
+		<p:confirmDialog widgetVar="senhas" message="Senhas não conferem!" global="true" showEffect="fade" hideEffect="explode">
+	    	<p:commandButton value="OK" type="button" styleClass="ui-confirmdialog-ok" onclick="PF('senhas').hide()" icon="ui-icon-check" ajax="false"/>
+		</p:confirmDialog>
+	
+		<div id="formBotoes">
+			<input type="button" onclick="window.location.href='login.xhtml'; return false;" value="Entrar" class="botaoControle"/>
+			<input type="button" onclick="window.location.href='cadastro.xhtml'; return false;" value="Cadastrar" class="botaoControle" style="background-color:#999999;"/>
+		</div>
+		<br></br>
+		<div id="formdiv">
+		<h:form class="formulario">
+			<fieldset id="legenda">
+				<legend><span class="tooltipContainer">  
+        			<a class="tooltipIcon" href="">
+            		<img src="imagens/logomain.png"/>
+        			</a>
+       			</span>
+        		</legend>
+        
+        			<p:inputText class="inputs" id="nome" value="#{cadastroBean.usuario.nome}" a:placeholder="Nome completo" required="true" requiredMessage="Nome completo obrigatorio">
+						<f:ajax event="blur" render="messagemNome" />
+					</p:inputText>
+					<p:message for="login" id="messagemNome" />
+        
+        			<br></br>
+        			
+					<p:inputText class="inputs" id="login" value="#{cadastroBean.usuario.usuario}" a:placeholder="Login" required="true" requiredMessage="Usuário obrigatorio">
+						<f:ajax event="blur" render="messagemUsuario" />
+					</p:inputText>
+					<p:message for="login" id="messagemUsuario" />
+					
+					<br></br>
+					
+					<p:inputText class="inputs" id="email" value="#{cadastroBean.usuario.email}" a:placeholder="E-mail" required="true" requiredMessage="E-mail obrigatório" validatorMessage="E-mail inválido">
+						<f:attribute name="type" value="email" />
+						<f:validateRegex pattern=".+@.+" />
+						<f:ajax event="blur" render="messagemEmail" />
+					</p:inputText>
+					<p:message for="email" id="messagemEmail" />
+					
+					<br></br>
+					
+					Data de Nascimento: <p:inputText class="inputs" id="nascimento" a:type="date" value="#{cadastroBean.dataDeNascimento}" required="true" requiredMessage="Nascimento obrigatório">
+						<f:ajax event="blur" render="messagemNascimento" />
+					</p:inputText>
+					<p:message for="nascimento" id="messagemNascimento" />
+					
+					<br></br>
+					
+					<p:password class="inputs"  id="senha"  value="#{cadastroBean.usuario.senha}" a:placeholder="Senha" a:type="password" feedback="true" required="true" requiredMessage="Senha obrigatória">
+						<f:ajax event="blur" render="messagemSenha" />
+					</p:password>
+					<p:message for="senha" id="messagemSenha" />
+					
+					<br/>
+					
+					<p:password class="inputs"  id="confirmar_senha" a:placeholder="Confirmar Senha" a:type="password" required="true" value="#{cadastroBean.senhaConfirma}">					
+						<f:ajax event="blur" render="messagemConfSenha" />
+					</p:password>
+					<p:message for="confirmar_senha" id="messagemConfSenha" />
+					
+					<br/>
+					
+					<h:commandButton class="button" value="Cadastrar" action="#{cadastroBean.cadastrar}"/>
+			</fieldset>
+		</h:form>
+		</div>
+	</h:body> 
+
+</html>

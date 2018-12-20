@@ -1,0 +1,46 @@
+.botaoControle{
+	width:100px;
+	height:30px;
+	background-color:#ffffff;
+}
+
+#formdiv {
+	margin: 0 auto;
+    opacity: 0.75;
+    
+  	filter: alpha(opacity=75);
+}
+#legenda{
+	padding: 40px;
+	border:0;
+	background-color:#cccccc;
+}
+.inputs{
+	padding: 12px 20px;
+	margin: 5px 0;
+	box-sizing: border-box;
+	width: 100%;
+
+}
+.data{
+	width: 65px !important;;
+}
+.tooltipContainer {
+    
+    position: relative;
+}
+.tooltipIcon {
+    text-decoration: none;
+}
+.formulario{
+	margin: 0 auto;
+	width:30%;
+	text-align: center;
+	
+}
+.button{
+	background-color:#ffe559;
+	margin-top:30px;
+	width: 100%;
+	padding: 10px 20px;
+}

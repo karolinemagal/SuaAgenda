@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+	
+	
+	<ui:composition template="_template.xhtml">
+		<ui:define name="cabecalho">
+	        <title>Meu Perfil</title>    
+			<link rel="StyleSheet" type="text/css" href="style_editar_perfil.css" media="screen"></link>
+		</ui:define>
+		
+		<ui:define name="titulo">
+			MEU PERFIL
+		</ui:define>
+		
+		<ui:define name="conteudo">
+			
+			<br></br>
+			<div id="formdiv">
+			<h:form class="formulario">
+				<fieldset id="legenda">
+					<legend><span class="tooltipContainer">  
+	        			<a class="tooltipIcon" href="">
+	            		<img src="imagens/logomain.png"/>
+	        			</a>
+	       			</span>
+	        		</legend>
+	        
+	        			<br></br>
+	        			
+						<p:inputText class="inputs" id="login" value="#{meuPerfilBean.usuario.nome}" a:placeholder="Nome do Usuário" required="true" requiredMessage="Usuário obrigatorio">
+							<f:ajax event="blur" render="messagemUsuario" />
+						</p:inputText>
+						<p:message for="login" id="messagemUsuario" />
+						
+						<br></br>
+						
+						<p:inputText class="inputs" id="email" value="#{meuPerfilBean.usuario.email}" a:placeholder="E-mail" required="true" requiredMessage="E-mail obrigatório" validatorMessage="E-mail inválido">
+							<f:attribute name="type" value="email" />
+							<f:validateRegex pattern=".+@.+" />
+							<f:ajax event="blur" render="messagemEmail" />
+						</p:inputText>
+						<p:message for="email" id="messagemEmail" />
+						
+						<br></br>
+						
+						Data de Nascimento: 
+						<p:inputText class="inputs" id="nascimento" a:type="date" value="#{meuPerfilBean.nascimento}" required="true" requiredMessage="Nascimento obrigatório">
+							<f:ajax event="blur" render="messagemNascimento" />
+						</p:inputText>
+						<p:message for="nascimento" id="messagemNascimento" />
+						
+						<br></br>
+						
+						<p:password class="inputs"  id="senha"  value="#{meuPerfilBean.usuario.senha}" a:placeholder="Senha" a:type="password" feedback="true" required="true" requiredMessage="Senha obrigatória">
+							<f:ajax event="blur" render="messagemSenha" />
+						</p:password>
+						<p:message for="senha" id="messagemSenha" />
+						
+						<br/>
+						
+						
+						<h:commandButton class="button" value="Atualizar" action="#{meuPerfilBean.atualizar}"/>
+				</fieldset>
+			</h:form>
+			</div>
+			</ui:define>
+	</ui:composition>
+
+</html>

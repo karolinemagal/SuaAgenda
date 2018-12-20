@@ -1,0 +1,13 @@
+#form{
+	width:22.6%;
+	margin: 0 auto;
+	opacity: 0.75;
+	filter: alpha(opacity=75);
+	background-color:#000000;
+}
+#botaoConfirma{
+	width:22.5%;
+	margin: 0 auto;
+	opacity: 0.75;
+	filter: alpha(opacity=75);
+}

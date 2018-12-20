@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui" 
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	
+	
+	<ui:composition template="_template.xhtml">
+	
+		<ui:define name="cabecalho">
+			<title>HOME</title>
+			<link rel="StyleSheet" type="text/css" href="style_tela_inicial.css" media="screen"></link>
+		</ui:define>
+	
+		<ui:define name="titulo">
+				<p:outputPanel>TAREFAS DE HOJE</p:outputPanel>
+		</ui:define>
+
+		<ui:define name="conteudo">
+			<h:form id="formularioAtividades">
+				<p:dataTable value="#{principalBean.tarefas}" var="tarefa" id="tabelaAtividades" >
+					
+					
+					<p:column headerText="Atividade" width="30%">
+						<h:outputText value="#{tarefa.nome}" />
+					</p:column>
+					
+					<p:column headerText="Descrição" width="50%">
+						<h:outputText value="#{tarefa.descricao}" />
+					</p:column>
+					
+					<p:column headerText="Editar" class="teste" width="10%">
+						<h:commandLink action="#{principalBean.editar(tarefa)}"><i class="fa fw fa-edit"></i></h:commandLink>
+					</p:column>					
+					
+					<p:column headerText="Remover" class="teste" width="10%">
+						<h:commandLink action="#{principalBean.deletar(tarefa)}"><i class="fa fw fa-trash-o"></i></h:commandLink>
+					</p:column>	
+						
+				</p:dataTable>
+				
+				
+				
+				<a href="nova_tarefa.xhtml"><div id="add">
+					<i class="fa fw fa-plus-circle" style="font-size:40px;"></i>
+					&sbnp;<font id="adicionar">ADICIONAR TAREFA</font>
+				</div></a>
+			</h:form>
+			
+		</ui:define>
+	
+	</ui:composition>
+
+	
+
+</html>

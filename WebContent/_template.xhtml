@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+
+	
+	<h:head>
+		<ui:insert name="cabecalho">
+		</ui:insert>
+		<style>               
+        	.Bimage{
+        		background-image:url(imagens/wallpaper.jpg); 
+        	}        
+        </style>
+    </h:head>
+	
+	<h:body class="Bimage">
+		<div id="cabecalho">
+			
+			
+			<h:form>	
+				<p:menuButton value="MENU">
+					<p:menuitem value="Home" action="tela_inicial?faces-redirect=true" icon="fa fa-fw fa-edit" />
+					<p:menuitem value="Meu Perfil" action="meu_perfil?faces-redirect=true" icon="fa fa-fw fa-user" />
+					<p:menuitem value="Minha Agenda" action="calendario?faces-redirect=true" icon="fa fa-fw fa-calendar" />
+					<p:separator />
+					<p:menuitem value="Logout" action="#{loginBean.deslogar}" icon="fa fa-fw fa-sign-out" />
+				</p:menuButton>
+			</h:form>
+			
+			<h1 align="center">
+				<ui:insert name="titulo"></ui:insert>
+			</h1>
+		</div>
+	
+		<div id="conteudo">
+			<ui:insert name="conteudo">
+			</ui:insert>
+		</div>
+	</h:body>
+
+</html>
